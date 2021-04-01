@@ -1,0 +1,48 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Agent",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-agent",
+      "program": "${workspaceFolder}/GooseAgent/bin/Debug/net5.0/GooseAgent.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/GooseAgent",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Server",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-server",
+      "program": "${workspaceFolder}/GooseServer/bin/Debug/net5.0/GooseServer.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/GooseServer",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "UI",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:3000", // create-react-app's default port 3000
+      "webRoot": "${workspaceRoot}",
+      "preLaunchTask": "react" // Add prelaunch Task npm: start (defined in tasks.json)
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Combined",
+      "configurations": [
+        "Agent",
+        "Server",
+        "UI"
+      ],
+    }
+  ]
+}

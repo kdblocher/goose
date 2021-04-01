@@ -1,0 +1,67 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-agent",
+      "command": "dotnet",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/GooseAgent"
+      },
+      "args": [
+        "build",
+        // Ask dotnet build to generate full paths for file names.
+        "/property:GenerateFullPaths=true",
+        // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-server",
+      "command": "dotnet",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/GooseServer"
+      },
+      "args": [
+        "build",
+        // Ask dotnet build to generate full paths for file names.
+        "/property:GenerateFullPaths=true",
+        // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "react",
+      "type": "npm",
+      "script": "start",
+      "options": {
+        "cwd": "${workspaceFolder}/goose-ui"
+      },
+      "isBackground": true, // This prevents the launch.json to wait for the completion of the task
+      "problemMatcher": {
+        "owner": "custom", // This is not needed but, required by the problemMatcher Object
+        "pattern": {
+          "regexp": "^$" // This is not needed but, required by the problemMatcher Object
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Compiling...", // Signals the begin of the Task
+          "endsPattern": "Compiled .*" // Signals that now the initialization of the task is complete
+        }
+      }
+    }
+  ]
+}
