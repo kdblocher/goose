@@ -8,3 +8,9 @@ Steps to a good April Fools' prank:
 
 ### Background
 This project originated out of an April Fools' prank that occurred on April 1, 2021 at [Wagner Machine Company](https://www.wagner-machine.com) . Many laughs were had.
+
+### Installation instructions
+See the [INSTALL.md](INSTALL.md) file.
+
+### License
+[GNU GPL v3](LICENSE)
